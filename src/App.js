@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import useAuth from "./hooks/auth/useAuth"
+import AuthContext from "./utils/AuthContext"
+import Admin from "./pages/Admin"
+import LoadingComponent from "./components/Loading"
+import LoginComponent from "./pages/auth/Login"
+import ForgotPasswordComponent from './pages/auth/ForgotPassword'
+import { Route, Routes } from "react-router-dom"
 
 function App() {
+  const { user, accessToken, login, logout, register, loading, updateCreds } =
+    useAuth()
+
+  if (loading) {
+    return <LoadingComponent />
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <AuthContext.Provider
+      value={{ user, accessToken, login, logout, register, updateCreds }}
+    >
+      {accessToken === null ? (
+        <Routes>
+          <Route path="/" element={<LoginComponent />} />
+          <Route path="/forgot-password" element={<ForgotPasswordComponent />} />
+        </Routes>
+      ) : (
+        <Admin />
+      )}
+    </AuthContext.Provider>
+  )
 }
 
-export default App;
+export default App
