@@ -7,13 +7,12 @@ import {
 } from "@mui/material"
 
 import { Close } from "@mui/icons-material"
-import moment from "moment"
 
-const ViewModal = ({ handleCloseViewModal, openViewModal, getViewData }) => {
-  const seconds = getViewData?.post_date?.seconds || 0;
-  const nanoseconds = getViewData?.post_date?.nanoseconds || 0;
-  const milliseconds = seconds * 1000 + nanoseconds / 1000000;
-  const dateTime = moment(milliseconds);
+const ViewMealTypes = ({
+  handleCloseViewModal,
+  openViewModal,
+  getViewData,
+}) => {
   return (
     <Modal
       open={openViewModal}
@@ -47,7 +46,7 @@ const ViewModal = ({ handleCloseViewModal, openViewModal, getViewData }) => {
                 fontWeight: "bold",
               }}
             >
-              View Social
+              View Meal Type
             </Typography>
             <IconButton
               onClick={() => handleCloseViewModal()}
@@ -66,72 +65,37 @@ const ViewModal = ({ handleCloseViewModal, openViewModal, getViewData }) => {
               sx={{
                 display: "flex",
                 justifyContent: "space-between",
+                alignItems: "center",
                 marginBottom: 3,
               }}
             >
               <Box sx={{ width: "50%" }}>
                 <Typography sx={{ fontWeight: "bold", color: "#FAA0A0" }}>
-                  Image Uploaded
+                  ID
                 </Typography>
-                <img
-                  style={{ width: 100, height: 100, borderRadius: 10 }}
-                  src={
-                    getViewData.image_url !== "null"
-                      ? getViewData.image_url
-                      : "https://climate.onep.go.th/wp-content/uploads/2020/01/default-image.jpg"
-                  }
-                  alt='Meal'
-                />
+                <Typography>{getViewData.id}</Typography>
               </Box>
               <Box sx={{ width: "50%" }}>
                 <Typography sx={{ fontWeight: "bold", color: "#FAA0A0" }}>
-                  ID Number
+                  Meal
                 </Typography>
-                <Typography>{getViewData.id}</Typography>
+                <Typography>{getViewData.meal}</Typography>
               </Box>
             </Box>
 
             <Box
               sx={{
                 display: "flex",
-                flexDirection: "row",
                 justifyContent: "space-between",
                 marginBottom: 3,
               }}
             >
-              <Box sx={{ width: "50%" }}>
-                <Typography sx={{ fontWeight: "bold", color: "#FAA0A0" }}>
-                  Social User
-                </Typography>
-                <Typography>{getViewData.post_name}</Typography>
-              </Box>
-              <Box sx={{ width: "50%" }}>
-                <Typography sx={{ fontWeight: "bold", color: "#FAA0A0" }}>
-                  Post Title
-                </Typography>
-                <Typography>{getViewData.post_title}</Typography>
-              </Box>
-            </Box>
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "row",
-                justifyContent: "space-between",
-                marginBottom: 3,
-              }}
-            >
-              <Box sx={{ width: "50%" }}>
+              <Box>
                 <Typography sx={{ fontWeight: "bold", color: "#FAA0A0" }}>
                   Description
                 </Typography>
-                <Typography>{getViewData.post_description}</Typography>
+                <Typography>{getViewData.description}</Typography>
               </Box>
-              <Box sx={{ width: "50%" }}>
-                  <Typography sx={{ fontWeight: "bold", color: "#FAA0A0" }}>
-                    Date Posted
-                  </Typography>
-                  {dateTime.format("MMMM D YYYY")}
-                </Box>
             </Box>
           </Box>
         </div>
@@ -140,4 +104,4 @@ const ViewModal = ({ handleCloseViewModal, openViewModal, getViewData }) => {
   )
 }
 
-export default ViewModal
+export default ViewMealTypes

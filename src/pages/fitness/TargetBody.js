@@ -14,12 +14,15 @@ import { bodyPartsCollectionRef } from "../../hooks/fitness/parts/constants"
 import EditBodyPartModal from "../../components/fitness/target-body/EditModal"
 import TargetBodyTable from "../../components/fitness/target-body/TargetBodyTable"
 import AddBodyPart from "../../components/fitness/target-body/AddModal"
+import ViewTargetModal from "../../components/fitness/target-body/ViewModal"
 
 const TargetBody = () => {
   const [openModal, setOpenModal] = useState(false)
   const [openEditModal, setOpenEditModal] = useState(false)
   const [editId, setEditId] = useState("")
   const [searchText, setSearchText] = useState("")
+  const [openViewModal, setOpenViewModal] = useState(false)
+  const [getViewData, setViewData] = useState({})
 
   const { bodyParts } = GetBodyPartsLists()
 
@@ -37,6 +40,16 @@ const TargetBody = () => {
 
   const handleCloseEditModal = () => {
     setOpenEditModal(false)
+  }
+
+  const handleOpenViewModal = (viewData) => {
+    console.log("viewData", viewData)
+    setViewData(viewData)
+    setOpenViewModal(true)
+  }
+
+  const handleCloseViewModal = () => {
+    setOpenViewModal(false)
   }
 
   const handleSubmit = (values, { setSubmitting }) => {
@@ -141,6 +154,7 @@ const TargetBody = () => {
         searchText={searchText}
         handleOpenEditModal={handleOpenEditModal}
         handleDeleteUser={handleDeleteUser}
+        handleOpenViewModal={handleOpenViewModal}
       />
 
       {/* ADD MODAL */}
@@ -155,6 +169,13 @@ const TargetBody = () => {
         openEditModal={openEditModal}
         handleEditSubmit={handleEditSubmit}
         handleCloseEditModal={handleCloseEditModal}
+      />
+
+      {/* VIEW MODAL */}
+      <ViewTargetModal
+        getViewData={getViewData}
+        openViewModal={openViewModal}
+        handleCloseViewModal={handleCloseViewModal}
       />
     </>
   )

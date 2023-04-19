@@ -10,12 +10,18 @@ import {
   Paper,
   IconButton,
 } from "@mui/material"
-import { BorderColor, DeleteForever } from "@mui/icons-material"
+import { BorderColor, DeleteForever, RemoveRedEye } from "@mui/icons-material"
 
-const TargetBodyTable = ({ searchText, bodyParts, handleDeleteUser, handleOpenEditModal }) => {
+const TargetBodyTable = ({
+  searchText,
+  bodyParts,
+  handleDeleteUser,
+  handleOpenEditModal,
+  handleOpenViewModal,
+}) => {
   const [page, setPage] = useState(0)
   const [rowsPerPage, setRowsPerPage] = useState(5)
-  
+
   const handleChangePage = (event, newPage) => {
     setPage(newPage)
   }
@@ -54,15 +60,29 @@ const TargetBodyTable = ({ searchText, bodyParts, handleDeleteUser, handleOpenEd
                   key={row.id}
                   sx={{
                     "&:hover": {
-                      backgroundColor: '#f8837980',
-                      cursor: 'pointer',
+                      backgroundColor: "#f8837980",
+                      cursor: "pointer",
                     },
                   }}
                 >
                   <TableCell>{row.id}</TableCell>
                   <TableCell>{row.body}</TableCell>
-                  <TableCell>{row.description}</TableCell>
                   <TableCell>
+                    {row.description.length > 30
+                      ? `${row.description.substring(0, 50)}...`
+                      : row.description}
+                  </TableCell>
+                  <TableCell>
+                    <IconButton
+                      onClick={() => handleOpenViewModal(row)}
+                      sx={{
+                        "&:hover": {
+                          color: "#FFF",
+                        },
+                      }}
+                    >
+                      <RemoveRedEye />
+                    </IconButton>
                     <IconButton
                       onClick={() => handleOpenEditModal(row.id)}
                       sx={{

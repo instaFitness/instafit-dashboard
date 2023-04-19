@@ -7,7 +7,6 @@ import { Login } from "@mui/icons-material"
 import { Formik, Form } from "formik"
 import CustomTextField from "../../components/Input"
 import AuthContext from "../../utils/AuthContext"
-import { Link } from "react-router-dom"
 
 const AuthLogin = () => {
   const { login } = useContext(AuthContext)

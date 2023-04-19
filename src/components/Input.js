@@ -4,7 +4,6 @@ import { TextField, InputAdornment, IconButton } from "@mui/material"
 import { VisibilityOff, Visibility } from "@mui/icons-material"
 
 const CustomTextField = ({ label, name, type }) => {
-  console.log("type", type)
   const [show, setUnShow] = useState(false)
   const handleClickShowPassword = () => {
     setUnShow(!show)

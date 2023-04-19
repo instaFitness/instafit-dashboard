@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import {
   TextField,
   Box,
@@ -14,12 +14,15 @@ import { database } from "../../firebase/firebase"
 import MealTypeTable from "../../components/meal/meal-type/MealTypeTable"
 import AddMealType from "../../components/meal/meal-type/AddModal"
 import EditMealTypeModal from "../../components/meal/meal-type/EditModal"
+import ViewMealTypes from "../../components/meal/meal-type/ViewModal"
 
 const MealType = () => {
   const [openModal, setOpenModal] = useState(false)
   const [openEditModal, setOpenEditModal] = useState(false)
   const [editId, setEditId] = useState("")
   const [searchText, setSearchText] = useState("")
+  const [openViewModal, setOpenViewModal] = useState(false)
+  const [getViewData, setViewData] = useState({})
 
   const { mealType } = GetMealTypeLists()
 
@@ -37,6 +40,15 @@ const MealType = () => {
 
   const handleCloseEditModal = () => {
     setOpenEditModal(false)
+  }
+
+  const handleOpenViewModal = (viewData) => {
+    setViewData(viewData)
+    setOpenViewModal(true)
+  }
+
+  const handleCloseViewModal = () => {
+    setOpenViewModal(false)
   }
 
   const handleSubmit = (values, { setSubmitting }) => {
@@ -141,6 +153,7 @@ const MealType = () => {
         searchText={searchText}
         handleOpenEditModal={handleOpenEditModal}
         handleDeleteUser={handleDeleteUser}
+        handleOpenViewModal={handleOpenViewModal}
       />
 
       {/* ADD MODAL */}
@@ -155,6 +168,13 @@ const MealType = () => {
         openEditModal={openEditModal}
         handleEditSubmit={handleEditSubmit}
         handleCloseEditModal={handleCloseEditModal}
+      />
+
+      {/* VIEW MODAL */}
+      <ViewMealTypes
+        getViewData={getViewData}
+        openViewModal={openViewModal}
+        handleCloseViewModal={handleCloseViewModal}
       />
     </>
   )

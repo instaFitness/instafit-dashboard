@@ -33,6 +33,7 @@ const SocialTable = ({
   const filteredData = socials.filter((row) =>
     row.post_name.toLowerCase().includes(searchText.toLowerCase())
   )
+
   return (
     <Paper>
       <TableContainer>
@@ -60,6 +61,12 @@ const SocialTable = ({
             {filteredData
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((row) => {
+                const inputTimestamp = {
+                  seconds: row.post_date.seconds,
+                  nanoseconds: row.post_date.nanoseconds,
+                };
+                const milliseconds = inputTimestamp.seconds * 1000 + inputTimestamp.nanoseconds / 1000000;
+                const dateTime = moment(milliseconds);
                 return (
                   <TableRow
                     key={row.id}
@@ -85,7 +92,7 @@ const SocialTable = ({
                     </TableCell>
                     <TableCell>{row.post_name}</TableCell>
                     <TableCell>{row.post_title}</TableCell>
-                    <TableCell>{moment(row.post_date).format("MMMM D YYYY")}</TableCell>
+                    <TableCell>{dateTime.format("MMMM D YYYY")}</TableCell>
                     <TableCell>
                       <IconButton
                         onClick={() => handleOpenViewModal(row)}
