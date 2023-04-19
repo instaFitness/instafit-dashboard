@@ -31,7 +31,7 @@ const SocialTable = ({
     setPage(0)
   }
   const filteredData = socials.filter((row) =>
-    row.post_title.toLowerCase().includes(searchText.toLowerCase())
+    row.post_name.toLowerCase().includes(searchText.toLowerCase())
   )
   return (
     <Paper>

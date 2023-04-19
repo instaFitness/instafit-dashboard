@@ -80,7 +80,7 @@ const AuthLogin = () => {
                     type='password'
                   />
                 </Box>
-                <Link to="/forgot-password">Forgot Password</Link>
+                {/* <Link to="/forgot-password">Forgot Password</Link> */}
                 <Box sx={{ textAlign: "right" }}>
                   <Button
                     type='submit'
