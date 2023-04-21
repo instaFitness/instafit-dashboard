@@ -241,6 +241,7 @@ const MealPlan = () => {
         handleEditSubmit={handleEditSubmit}
         handleCloseEditModal={handleCloseEditModal}
         mealTime={mealTime}
+        editId={editId}
         mealTypeOptions={mealTypeOptions}
       />
 

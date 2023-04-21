@@ -80,7 +80,7 @@ const MealTypeTable = ({
                       <RemoveRedEye />
                     </IconButton>
                     <IconButton
-                      onClick={() => handleOpenEditModal(row.id)}
+                      onClick={() => handleOpenEditModal(row)}
                       sx={{
                         "&:hover": {
                           color: "#FFF",

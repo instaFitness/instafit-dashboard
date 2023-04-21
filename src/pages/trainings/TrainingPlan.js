@@ -45,8 +45,8 @@ const TrainingPlan = () => {
     setOpenModal(false)
   }
 
-  const handleOpenEditModal = (clickId) => {
-    setEditId(clickId)
+  const handleOpenEditModal = (trainPlan) => {
+    setEditId(trainPlan)
     setOpenEditModal(true)
   }
 
@@ -83,7 +83,7 @@ const TrainingPlan = () => {
   }
 
   const handleEditSubmit = (values, { setSubmitting }) => {
-    const trainingSpecificDoc = doc(database, "trainings", editId)
+    const trainingSpecificDoc = doc(database, "trainings", editId.id)
     const newFieldUpdate = {
       name: values.name,
       trainer: values.trainer,
@@ -197,6 +197,7 @@ const TrainingPlan = () => {
       {/* EDIT MODAL */}
       <EditTraining
         openEditModal={openEditModal}
+        editId={editId}
         handleEditSubmit={handleEditSubmit}
         handleCloseEditModal={handleCloseEditModal}
         trainingType={trainingType}

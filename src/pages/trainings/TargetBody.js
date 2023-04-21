@@ -33,8 +33,8 @@ const TargetBody = () => {
     setOpenModal(false)
   }
 
-  const handleOpenEditModal = (clickId) => {
-    setEditId(clickId)
+  const handleOpenEditModal = (body) => {
+    setEditId(body)
     setOpenEditModal(true)
   }
 
@@ -63,7 +63,7 @@ const TargetBody = () => {
   }
 
   const handleEditSubmit = (values, { setSubmitting }) => {
-    const bodyPartSpecificDoc = doc(database, "target-body", editId)
+    const bodyPartSpecificDoc = doc(database, "target-body", editId.id)
     const newFieldUpdate = {
       body: values.body,
       description: values.description
@@ -166,6 +166,7 @@ const TargetBody = () => {
       {/* EDIT MODAL */}
       <EditBodyPartModal 
         openEditModal={openEditModal}
+        editId={editId}
         handleEditSubmit={handleEditSubmit}
         handleCloseEditModal={handleCloseEditModal}
       />

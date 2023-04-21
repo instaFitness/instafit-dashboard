@@ -33,8 +33,8 @@ const MealType = () => {
     setOpenModal(false)
   }
 
-  const handleOpenEditModal = (clickId) => {
-    setEditId(clickId)
+  const handleOpenEditModal = (meal) => {
+    setEditId(meal)
     setOpenEditModal(true)
   }
 
@@ -63,7 +63,7 @@ const MealType = () => {
   }
 
   const handleEditSubmit = (values, { setSubmitting }) => {
-    const mealTypeSpecificDoc = doc(database, "meal-types", editId)
+    const mealTypeSpecificDoc = doc(database, "meal-types", editId.id)
     const newFieldUpdate = {
       meal: values.meal,
       description: values.description
@@ -166,6 +166,7 @@ const MealType = () => {
       {/* EDIT MODAL */}
       <EditMealTypeModal 
         openEditModal={openEditModal}
+        editId={editId}
         handleEditSubmit={handleEditSubmit}
         handleCloseEditModal={handleCloseEditModal}
       />

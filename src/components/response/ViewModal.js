@@ -4,7 +4,6 @@ import {
   Modal,
   Slide,
   Typography,
-  Button,
   Link,
 } from "@mui/material"
 import { Close } from "@mui/icons-material"

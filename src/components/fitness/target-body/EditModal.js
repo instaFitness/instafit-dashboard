@@ -16,6 +16,7 @@ const EditBodyPartModal = ({
   openEditModal,
   handleEditSubmit,
   handleCloseEditModal,
+  editId,
 }) => {
   return (
     <Modal
@@ -66,7 +67,7 @@ const EditBodyPartModal = ({
             }}
           >
             <Formik
-              initialValues={editBodyPartInitialValues}
+              initialValues={editId || editBodyPartInitialValues}
               validationSchema={editBodyPartValidationSchema}
               onSubmit={handleEditSubmit}
             >

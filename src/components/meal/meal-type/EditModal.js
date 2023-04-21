@@ -16,6 +16,7 @@ const EditMealTypeModal = ({
   openEditModal,
   handleEditSubmit,
   handleCloseEditModal,
+  editId,
 }) => {
   return (
     <Modal
@@ -66,7 +67,7 @@ const EditMealTypeModal = ({
             }}
           >
             <Formik
-              initialValues={editMealTypeInitialValues}
+              initialValues={editId || editMealTypeInitialValues}
               validationSchema={editMealTypeValidationSchema}
               onSubmit={handleEditSubmit}
             >

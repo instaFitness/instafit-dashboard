@@ -94,7 +94,7 @@ const CustomTable = ({ searchText, users, handleDeleteUser, handleOpenEditModal,
                   <TableCell>{row.role}</TableCell>
                   <TableCell>
                     <IconButton
-                      onClick={() => handleOpenEditModal(row.id)}
+                      onClick={() => handleOpenEditModal(row)}
                       sx={{
                         "&:hover": {
                           color: "#FFF",

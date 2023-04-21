@@ -18,6 +18,7 @@ const CustomEditModal = ({
   handleEditSubmit,
   handleCloseEditModal,
   userRole,
+  editId,
 }) => {
   return (
     <Modal
@@ -68,7 +69,7 @@ const CustomEditModal = ({
             }}
           >
             <Formik
-              initialValues={editInitialValues}
+              initialValues={editId || editInitialValues}
               validationSchema={editValidationSchema}
               onSubmit={handleEditSubmit}
             >

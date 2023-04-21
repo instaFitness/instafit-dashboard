@@ -44,13 +44,17 @@ const ResponseList = () => {
     }
     return options
   })
-  const userOptions = users.map((user) => {
-    const options = {
-      label: user.email,
-      value: user.email,
-    }
-    return options
-  })
+  const userOptions = users
+    .map((user) => {
+      const options = {
+        label: user.email,
+        value: user.email,
+      }
+      return options
+    })
+    .filter((item, index, array) => {
+      return array.findIndex((other) => other.value === item.value) === index
+    })
   const bodyPartOptions = bodyParts.map((part) => {
     const options = {
       label: part.body,
@@ -66,8 +70,8 @@ const ResponseList = () => {
     setOpenModal(false)
   }
 
-  const handleOpenEditModal = (clickId) => {
-    setEditId(clickId)
+  const handleOpenEditModal = (responseData) => {
+    setEditId(responseData)
     setOpenEditModal(true)
   }
 
@@ -120,7 +124,10 @@ const ResponseList = () => {
     }
   }
 
-  const handleEditSubmit = async (values, { setSubmitting, resetForm, setStatus }) => {
+  const handleEditSubmit = async (
+    values,
+    { setSubmitting, resetForm, setStatus }
+  ) => {
     const responseSpecificDoc = doc(database, "respond_plans", editId.id)
     const imageRef = ref(storage, `images/${editId.img_ref}`)
     const storageRef = ref(storage, `images/${values.file.name}`)
@@ -265,6 +272,7 @@ const ResponseList = () => {
         userOptions={userOptions}
         bodyPartOptions={bodyPartOptions}
         trainingOptions={trainingOptions}
+        editId={editId}
       />
 
       {/* VIEW MODAL */}

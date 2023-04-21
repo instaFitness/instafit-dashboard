@@ -42,8 +42,8 @@ const Users = () => {
     }
   }
 
-  const handleOpenEditModal = (clickId) => {
-    setEditId(clickId)
+  const handleOpenEditModal = (userData) => {
+    setEditId(userData)
     setOpenEditModal(true)
   }
   const handleCloseEditModal = () => {
@@ -68,7 +68,7 @@ const Users = () => {
   }
 
   const handleEditSubmit = async (values, { setSubmitting }) => {
-    const userSpecificDoc = doc(database, "users", editId)
+    const userSpecificDoc = doc(database, "users", editId.id)
     const newFieldUpdate = {
       first_name: values.first_name,
       last_name: values.last_name,
@@ -181,6 +181,7 @@ const Users = () => {
         handleEditSubmit={handleEditSubmit}
         handleCloseEditModal={handleCloseEditModal}
         userRole={userRole}
+        editId={editId}
       />
     </Box>
   )

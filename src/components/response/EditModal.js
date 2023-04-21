@@ -24,6 +24,7 @@ import {
     userOptions,
     bodyPartOptions,
     trainingOptions,
+    editId,
   }) => {
     return (
       <Modal
@@ -74,7 +75,7 @@ import {
               }}
             >
               <Formik
-                initialValues={editResponseInitialValues}
+                initialValues={editId || editResponseInitialValues}
                 validationSchema={editResponseValidationSchema}
                 onSubmit={handleEditSubmit}
               >

@@ -23,7 +23,7 @@ const CustomMultiSelect = ({ name, options, label }) => {
         width: "49%",
         paddingBottom: 2,
       }}
-      size="small"
+      size='small'
       error={touched[name] && Boolean(errors[name])}
     >
       <InputLabel>{label}</InputLabel>
@@ -36,6 +36,9 @@ const CustomMultiSelect = ({ name, options, label }) => {
           <div style={{ display: "flex", flexWrap: "wrap" }}>
             {selected.map((value) => {
               const option = options.find((option) => option.value === value)
+              if (!option) {
+                return null;
+              }
               return (
                 <Chip
                   key={value}

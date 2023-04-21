@@ -22,6 +22,7 @@ const EditTraining = ({
   trainingType,
   bodyPartOptions,
   subscriptionType,
+  editId,
 }) => {
   return (
     <Modal
@@ -72,7 +73,7 @@ const EditTraining = ({
             }}
           >
             <Formik
-              initialValues={editTrainingInitialValues}
+              initialValues={editId || editTrainingInitialValues}
               validationSchema={editTrainingValidationSchema}
               onSubmit={handleEditSubmit}
             >
