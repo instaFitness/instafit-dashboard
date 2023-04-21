@@ -8,11 +8,10 @@ import {
   TablePagination,
   TableRow,
   Paper,
-  IconButton,
   Button,
 } from "@mui/material"
-import { DeleteForever} from "@mui/icons-material"
 import moment from "moment"
+import CustomDeleteButton from "../CustomDeleteButton"
 
 const RequestTable = ({
   searchText,
@@ -77,15 +76,23 @@ const RequestTable = ({
                     <TableCell>{row.request_target_weight} kg</TableCell>
                     <TableCell>
                       <Button
-                        onClick={() => handleChangeStatus(row.id, row.request_status)}
+                        onClick={() =>
+                          handleChangeStatus(row.id, row.request_status)
+                        }
                         variant='contained'
                         size='small'
                         sx={{
-                          backgroundColor: row.request_status === "Not Processed" ? "#F1C40F" : "#58D68D",
+                          backgroundColor:
+                            row.request_status === "Not Processed"
+                              ? "#F1C40F"
+                              : "#58D68D",
                           color: "#FFF",
                           marginRight: 2,
                           "&:hover": {
-                            backgroundColor: row.request_status === "Not Processed" ? "#F1C40F" : "#58D68D",
+                            backgroundColor:
+                              row.request_status === "Not Processed"
+                                ? "#F1C40F"
+                                : "#58D68D",
                             color: "#FFF",
                           },
                         }}
@@ -97,16 +104,10 @@ const RequestTable = ({
                       {moment(row.request_date).format("MMMM D YYYY")}
                     </TableCell>
                     <TableCell>
-                      <IconButton
-                        onClick={() => handleDeleteRequest(row.id)}
-                        sx={{
-                          "&:hover": {
-                            color: "#FFF",
-                          },
-                        }}
-                      >
-                        <DeleteForever />
-                      </IconButton>
+                      <CustomDeleteButton
+                        onDelete={() => handleDeleteRequest(row.id)}
+                        confirmText='Are you sure you want to delete this item?'
+                      />
                     </TableCell>
                   </TableRow>
                 )

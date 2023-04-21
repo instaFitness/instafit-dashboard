@@ -12,7 +12,8 @@ import {
   Button,
   Box,
 } from "@mui/material"
-import { BorderColor, DeleteForever, RemoveRedEye } from "@mui/icons-material"
+import { BorderColor, RemoveRedEye } from "@mui/icons-material"
+import CustomDeleteButton from "../../CustomDeleteButton"
 
 const MealPlanTable = ({
   searchText,
@@ -78,7 +79,11 @@ const MealPlanTable = ({
                       <Box>
                         <img
                           style={{ width: 100, height: 100, borderRadius: 10 }}
-                          src={row.image_url !== "null" ? row.image_url : 'https://climate.onep.go.th/wp-content/uploads/2020/01/default-image.jpg'}
+                          src={
+                            row.image_url !== "null"
+                              ? row.image_url
+                              : "https://climate.onep.go.th/wp-content/uploads/2020/01/default-image.jpg"
+                          }
                           alt='Meal'
                         />
                       </Box>
@@ -128,16 +133,10 @@ const MealPlanTable = ({
                       >
                         <BorderColor />
                       </IconButton>
-                      <IconButton
-                        onClick={() => handleDeleteUser(row.id, row.image_ref)}
-                        sx={{
-                          "&:hover": {
-                            color: "#FFF",
-                          },
-                        }}
-                      >
-                        <DeleteForever />
-                      </IconButton>
+                      <CustomDeleteButton
+                        onDelete={() => handleDeleteUser(row.id, row.image_ref)}
+                        confirmText='Are you sure you want to delete this item?'
+                      />
                     </TableCell>
                   </TableRow>
                 )

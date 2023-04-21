@@ -11,8 +11,9 @@ import {
   IconButton,
   Box,
 } from "@mui/material"
-import { DeleteForever, RemoveRedEye } from "@mui/icons-material"
+import { RemoveRedEye } from "@mui/icons-material"
 import moment from "moment"
+import CustomDeleteButton from "../CustomDeleteButton"
 
 const SocialTable = ({
   searchText,
@@ -104,16 +105,10 @@ const SocialTable = ({
                       >
                         <RemoveRedEye />
                       </IconButton>
-                      <IconButton
-                        onClick={() => handleDeleteSocial(row.id, row.image_ref)}
-                        sx={{
-                          "&:hover": {
-                            color: "#FFF",
-                          },
-                        }}
-                      >
-                        <DeleteForever />
-                      </IconButton>
+                      <CustomDeleteButton
+                        onDelete={() => handleDeleteSocial(row.id, row.image_ref)}
+                        confirmText='Are you sure you want to delete this item?'
+                      />
                     </TableCell>
                   </TableRow>
                 )

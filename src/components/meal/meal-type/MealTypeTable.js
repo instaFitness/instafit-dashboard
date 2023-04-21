@@ -10,7 +10,8 @@ import {
   Paper,
   IconButton,
 } from "@mui/material"
-import { BorderColor, DeleteForever, RemoveRedEye } from "@mui/icons-material"
+import { BorderColor, RemoveRedEye } from "@mui/icons-material"
+import CustomDeleteButton from "../../CustomDeleteButton"
 
 const MealTypeTable = ({
   searchText,
@@ -89,16 +90,10 @@ const MealTypeTable = ({
                     >
                       <BorderColor />
                     </IconButton>
-                    <IconButton
-                      onClick={() => handleDeleteUser(row.id)}
-                      sx={{
-                        "&:hover": {
-                          color: "#FFF",
-                        },
-                      }}
-                    >
-                      <DeleteForever />
-                    </IconButton>
+                    <CustomDeleteButton
+                      onDelete={() => handleDeleteUser(row.id)}
+                      confirmText="Are you sure you want to delete this item?"
+                    />
                   </TableCell>
                 </TableRow>
               ))}

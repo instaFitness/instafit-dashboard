@@ -8,10 +8,9 @@ import {
   TablePagination,
   TableRow,
   Paper,
-  IconButton,
   Button,
 } from "@mui/material"
-import { DeleteForever} from "@mui/icons-material"
+import CustomDeleteButton from "../CustomDeleteButton"
 
 const SubscriptionTable = ({
   searchText,
@@ -88,16 +87,10 @@ const SubscriptionTable = ({
                     <TableCell>{row.payment_type}</TableCell>
                     <TableCell>{row.amount}</TableCell>
                     <TableCell>
-                      <IconButton
-                        onClick={() => handleDeleteRequest(row.id)}
-                        sx={{
-                          "&:hover": {
-                            color: "#FFF",
-                          },
-                        }}
-                      >
-                        <DeleteForever />
-                      </IconButton>
+                      <CustomDeleteButton
+                        onDelete={() => handleDeleteRequest(row.id)}
+                        confirmText='Are you sure you want to delete this item?'
+                      />
                     </TableCell>
                   </TableRow>
                 )

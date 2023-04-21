@@ -11,12 +11,19 @@ import {
   IconButton,
   Button,
 } from "@mui/material"
-import { BorderColor, DeleteForever } from "@mui/icons-material"
+import { BorderColor } from "@mui/icons-material"
+import CustomDeleteButton from "../CustomDeleteButton"
 
-const CustomTable = ({ searchText, users, handleDeleteUser, handleOpenEditModal, handleChangeStatus }) => {
+const CustomTable = ({
+  searchText,
+  users,
+  handleDeleteUser,
+  handleOpenEditModal,
+  handleChangeStatus,
+}) => {
   const [page, setPage] = useState(0)
   const [rowsPerPage, setRowsPerPage] = useState(5)
-  
+
   const handleChangePage = (event, newPage) => {
     setPage(newPage)
   }
@@ -64,8 +71,8 @@ const CustomTable = ({ searchText, users, handleDeleteUser, handleOpenEditModal,
                   key={row.id}
                   sx={{
                     "&:hover": {
-                      backgroundColor: '#f8837980',
-                      cursor: 'pointer',
+                      backgroundColor: "#f8837980",
+                      cursor: "pointer",
                     },
                   }}
                 >
@@ -74,23 +81,27 @@ const CustomTable = ({ searchText, users, handleDeleteUser, handleOpenEditModal,
                   <TableCell>{row.email}</TableCell>
                   <TableCell>{row.phone}</TableCell>
                   <TableCell>
-                      <Button
-                        onClick={() => handleChangeStatus(row.id, row.subscriptions)}
-                        variant='contained'
-                        size='small'
-                        sx={{
-                          backgroundColor: row.subscriptions === "no" ? "#F1C40F" : "#58D68D",
+                    <Button
+                      onClick={() =>
+                        handleChangeStatus(row.id, row.subscriptions)
+                      }
+                      variant='contained'
+                      size='small'
+                      sx={{
+                        backgroundColor:
+                          row.subscriptions === "no" ? "#F1C40F" : "#58D68D",
+                        color: "#FFF",
+                        marginRight: 2,
+                        "&:hover": {
+                          backgroundColor:
+                            row.subscriptions === "no" ? "#F1C40F" : "#58D68D",
                           color: "#FFF",
-                          marginRight: 2,
-                          "&:hover": {
-                            backgroundColor: row.subscriptions === "no" ? "#F1C40F" : "#58D68D",
-                            color: "#FFF",
-                          },
-                        }}
-                      >
-                        {row.subscriptions}
-                      </Button>
-                    </TableCell>
+                        },
+                      }}
+                    >
+                      {row.subscriptions}
+                    </Button>
+                  </TableCell>
                   <TableCell>{row.role}</TableCell>
                   <TableCell>
                     <IconButton
@@ -103,16 +114,10 @@ const CustomTable = ({ searchText, users, handleDeleteUser, handleOpenEditModal,
                     >
                       <BorderColor />
                     </IconButton>
-                    <IconButton
-                      onClick={() => handleDeleteUser(row.id)}
-                      sx={{
-                        "&:hover": {
-                          color: "#FFF",
-                        },
-                      }}
-                    >
-                      <DeleteForever />
-                    </IconButton>
+                    <CustomDeleteButton
+                      onDelete={() => handleDeleteUser(row.id)}
+                      confirmText='Are you sure you want to delete this item?'
+                    />
                   </TableCell>
                 </TableRow>
               ))}

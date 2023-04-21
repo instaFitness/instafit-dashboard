@@ -11,7 +11,8 @@ import {
   IconButton,
   Button,
 } from "@mui/material"
-import { BorderColor, DeleteForever, RemoveRedEye } from "@mui/icons-material"
+import { BorderColor, RemoveRedEye } from "@mui/icons-material"
+import CustomDeleteButton from "../CustomDeleteButton"
 
 const TrainingTable = ({
   searchText,
@@ -101,9 +102,7 @@ const TrainingTable = ({
                       size='small'
                       sx={{
                         backgroundColor:
-                          row.subscriptions === "free"
-                            ? "#85C1E9"
-                            : "#58D68D",
+                          row.subscriptions === "free" ? "#85C1E9" : "#58D68D",
                         color: "#FFF",
                         marginRight: 2,
                         "&:hover": {
@@ -139,16 +138,10 @@ const TrainingTable = ({
                     >
                       <BorderColor />
                     </IconButton>
-                    <IconButton
-                      onClick={() => handleDeleteUser(row.id)}
-                      sx={{
-                        "&:hover": {
-                          color: "#FFF",
-                        },
-                      }}
-                    >
-                      <DeleteForever />
-                    </IconButton>
+                    <CustomDeleteButton
+                      onDelete={() => handleDeleteUser(row.id)}
+                      confirmText='Are you sure you want to delete this item?'
+                    />
                   </TableCell>
                 </TableRow>
               ))}
