@@ -108,7 +108,7 @@ const ResponseTable = ({
                       <BorderColor />
                     </IconButton>
                     <CustomDeleteButton
-                      onDelete={() => handleDeleteUser(row.id)}
+                      onDelete={() => handleDeleteUser(row.id, row.img_ref)}
                       confirmText='Are you sure you want to delete this item?'
                     />
                   </TableCell>

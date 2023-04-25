@@ -10,11 +10,9 @@ import { Close } from "@mui/icons-material"
 import moment from "moment"
 
 const ViewModal = ({ handleCloseViewModal, openViewModal, getViewData }) => {
-  const inputTimestamp = {
-    seconds: Object.keys(getViewData) > 0 ? getViewData.duration.seconds : undefined,
-    nanoseconds: Object.keys(getViewData) > 0 ? getViewData.duration.nanoseconds : undefined
-  };
-  const milliseconds = inputTimestamp.seconds * 1000 + inputTimestamp.nanoseconds / 1000000;
+  const seconds = getViewData?.duration?.seconds || 0;
+  const nanoseconds = getViewData?.duration?.nanoseconds || 0;
+  const milliseconds = seconds * 1000 + nanoseconds / 1000000;
   const dateTime = moment(milliseconds);
   return (
     <Modal
