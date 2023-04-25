@@ -13,6 +13,7 @@ import CustomMultiSelect from "../CustomMultiSelect"
 import CustomSelect from "../CustomSelect"
 import CustomDateInput from "../CustomDateInput"
 import CustomTextArea from "../CustomTextArea"
+import CustomInput from "../Input"
 import FileUpload from "../FileUpload"
 import { responseInitialValue } from "../../formik-utils/response/initialValues"
 import { responseValidationSchema } from "../../formik-utils/response/validationSchema"
@@ -123,12 +124,49 @@ const AddModal = ({
                       options={trainingOptions}
                     />
                   </Box>
-                  <Box sx={{marginBottom: 2,}}>
-                    <Typography sx={{marginBottom: 1, color: "#FAA0A0"}}>Meal Image</Typography>
+                  <Box sx={{ marginBottom: 2 }}>
+                    <Typography sx={{ marginBottom: 1, color: "#FAA0A0" }}>
+                      Meal Image
+                    </Typography>
                     <FileUpload name='file' maxSize={2 * 1024 * 1024} />
                   </Box>
-                  <Box>
-                    <CustomTextArea name='meal' label="Meal Procedure" />
+                  <Box
+                    sx={{
+                      display: "flex",
+                      flexDirection: "row",
+                      justifyContent: "space-between",
+                    }}
+                  >
+                    <Box sx={{ marginRight: 2 }}>
+                      <CustomInput
+                        label='Breakfast Name'
+                        name='breakfast_name'
+                      />
+                      <CustomTextArea
+                        name='breakfast_procedure'
+                        label='Breakfast Procedure'
+                      />
+                    </Box>
+                    <Box>
+                      <CustomInput label='Lunch Name' name='lunch_name' />
+                      <CustomTextArea
+                        name='lunch_procedure'
+                        label='Lunch Procedure'
+                      />
+                    </Box>
+                  </Box>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      flexDirection: "column",
+                      justifyContent: "space-between",
+                    }}
+                  >
+                    <CustomInput label='Dinner Name' name='dinner_name' />
+                    <CustomTextArea
+                      name='dinner_procedure'
+                      label='Dinner Procedure'
+                    />
                   </Box>
                   <Box sx={{ textAlign: "right" }}>
                     <Button

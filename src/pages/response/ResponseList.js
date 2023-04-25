@@ -104,13 +104,18 @@ const ResponseList = () => {
           try {
             await addDoc(respondCollectionRef, {
               user: values.user,
-              meal: values.meal,
               duration: values.duration,
               training_url: values.training_url,
               target_body_parts: values.target_body_parts,
               training_procedure: values.training_procedure,
               img_ref: values.file.name,
               img_url: downloadURL,
+              breakfast_name: values.breakfast_name,
+              breakfast_procedure: values.breakfast_procedure,
+              lunch_name: values.lunch_name,
+              lunch_procedure: values.lunch_procedure,
+              dinner_name: values.dinner_name,
+              dinner_procedure: values.dinner_procedure,
             })
           } catch (error) {
             console.error("Error saving image URL to Firestore:", error)
@@ -145,13 +150,18 @@ const ResponseList = () => {
         try {
           const newFieldUpdate = {
             user: values.user,
-            meal: values.meal,
             duration: values.duration,
             training_url: values.training_url,
             target_body_parts: values.target_body_parts,
             training_procedure: values.training_procedure,
             img_ref: values.file.name,
             img_url: downloadURL,
+            breakfast_name: values.breakfast_name,
+            breakfast_procedure: values.breakfast_procedure,
+            lunch_name: values.lunch_name,
+            lunch_procedure: values.lunch_procedure,
+            dinner_name: values.dinner_name,
+            dinner_procedure: values.dinner_procedure,
           }
           await updateDoc(responseSpecificDoc, newFieldUpdate)
         } catch (error) {

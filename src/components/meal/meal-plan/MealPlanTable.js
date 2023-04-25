@@ -45,7 +45,7 @@ const MealPlanTable = ({
                 Meal Image
               </TableCell>
               <TableCell sx={{ color: "#FFF", fontWeight: "bold" }}>
-                Meal Plan
+                Meal Name
               </TableCell>
               <TableCell sx={{ color: "#FFF", fontWeight: "bold" }}>
                 Calories Count

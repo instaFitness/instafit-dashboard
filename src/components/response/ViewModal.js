@@ -83,11 +83,80 @@ const ViewModal = ({ handleCloseViewModal, openViewModal, getViewData }) => {
                   alt='Meal'
                 />
               </Box>
+            </Box>
+
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                marginBottom: 3,
+              }}
+            >
               <Box sx={{ width: "50%" }}>
                 <Typography sx={{ fontWeight: "bold", color: "#FAA0A0" }}>
-                  Meal Procedure
+                  Breakfast Name
                 </Typography>
-                <Typography>{getViewData.meal}</Typography>
+                <Typography>
+                  {getViewData.breakfast_name}
+                </Typography>
+              </Box>
+              <Box sx={{ width: "50%" }}>
+                <Typography sx={{ fontWeight: "bold", color: "#FAA0A0" }}>
+                  Breakfast Procedure
+                </Typography>
+                <Typography>
+                  {getViewData.breakfast_procedure}
+                </Typography>
+              </Box>
+            </Box>
+
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                marginBottom: 3,
+              }}
+            >
+              <Box sx={{ width: "50%" }}>
+                <Typography sx={{ fontWeight: "bold", color: "#FAA0A0" }}>
+                  Lunch Name
+                </Typography>
+                <Typography>
+                  {getViewData.lunch_name}
+                </Typography>
+              </Box>
+              <Box sx={{ width: "50%" }}>
+                <Typography sx={{ fontWeight: "bold", color: "#FAA0A0" }}>
+                  Lunch Procedure
+                </Typography>
+                <Typography>
+                  {getViewData.lunch_procedure}
+                </Typography>
+              </Box>
+            </Box>
+
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                marginBottom: 3,
+              }}
+            >
+              <Box sx={{ width: "50%" }}>
+                <Typography sx={{ fontWeight: "bold", color: "#FAA0A0" }}>
+                  Dinner Name
+                </Typography>
+                <Typography>
+                  {getViewData.dinner_name}
+                </Typography>
+              </Box>
+              <Box sx={{ width: "50%" }}>
+                <Typography sx={{ fontWeight: "bold", color: "#FAA0A0" }}>
+                  Dinner Procedure
+                </Typography>
+                <Typography>
+                  {getViewData.dinner_procedure}
+                </Typography>
               </Box>
             </Box>
 
