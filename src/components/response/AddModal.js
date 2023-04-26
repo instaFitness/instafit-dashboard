@@ -72,6 +72,8 @@ const AddModal = ({
           <Box
             sx={{
               padding: 3,
+              overflowY: "scroll",
+              height: 400,
             }}
           >
             <Formik

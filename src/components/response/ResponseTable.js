@@ -47,7 +47,7 @@ const ResponseTable = ({
                 Body Parts
               </TableCell>
               <TableCell sx={{ color: "#FFF", fontWeight: "bold" }}>
-                Actions6
+                Actions
               </TableCell>
             </TableRow>
           </TableHead>
