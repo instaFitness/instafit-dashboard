@@ -30,7 +30,7 @@ const RequestTable = ({
     setPage(0)
   }
   const filteredData = request_plan.filter((row) =>
-    row.request_name.toLowerCase().includes(searchText.toLowerCase())
+    row.request_user.toLowerCase().includes(searchText.toLowerCase())
   )
   return (
     <Paper>
@@ -42,10 +42,16 @@ const RequestTable = ({
                 Name
               </TableCell>
               <TableCell sx={{ color: "#FFF", fontWeight: "bold" }}>
-                Current Weight
+                Target Weight Requested
               </TableCell>
               <TableCell sx={{ color: "#FFF", fontWeight: "bold" }}>
-                Target Weight Requested
+                Target Body Requested
+              </TableCell>
+              <TableCell sx={{ color: "#FFF", fontWeight: "bold" }}>
+                Workout Requested
+              </TableCell>
+              <TableCell sx={{ color: "#FFF", fontWeight: "bold" }}>
+                Meal Requested
               </TableCell>
               <TableCell sx={{ color: "#FFF", fontWeight: "bold" }}>
                 Status
@@ -71,9 +77,11 @@ const RequestTable = ({
                       },
                     }}
                   >
-                    <TableCell>{row.request_name}</TableCell>
-                    <TableCell>{row.request_current_weight} kg</TableCell>
+                    <TableCell>{row.request_user}</TableCell>
                     <TableCell>{row.request_target_weight} kg</TableCell>
+                    <TableCell>{row.request_target_body}</TableCell>
+                    <TableCell>{row.request_workout_type}</TableCell>
+                    <TableCell>{row.request_meal}</TableCell>
                     <TableCell>
                       <Button
                         onClick={() =>
