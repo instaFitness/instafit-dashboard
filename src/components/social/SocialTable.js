@@ -12,7 +12,6 @@ import {
   Box,
 } from "@mui/material"
 import { RemoveRedEye } from "@mui/icons-material"
-import moment from "moment"
 import CustomDeleteButton from "../CustomDeleteButton"
 
 const SocialTable = ({
@@ -45,10 +44,10 @@ const SocialTable = ({
                 Image Uploaded
               </TableCell>
               <TableCell sx={{ color: "#FFF", fontWeight: "bold" }}>
-                Post Name
+                Post Email
               </TableCell>
               <TableCell sx={{ color: "#FFF", fontWeight: "bold" }}>
-                Post Title
+                Post Name
               </TableCell>
               <TableCell sx={{ color: "#FFF", fontWeight: "bold" }}>
                 Date Posted
@@ -62,12 +61,6 @@ const SocialTable = ({
             {filteredData
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((row) => {
-                const inputTimestamp = {
-                  seconds: row.post_date.seconds,
-                  nanoseconds: row.post_date.nanoseconds,
-                };
-                const milliseconds = inputTimestamp.seconds * 1000 + inputTimestamp.nanoseconds / 1000000;
-                const dateTime = moment(milliseconds);
                 return (
                   <TableRow
                     key={row.id}
@@ -91,9 +84,9 @@ const SocialTable = ({
                         />
                       </Box>
                     </TableCell>
+                    <TableCell>{row.post_email}</TableCell>
                     <TableCell>{row.post_name}</TableCell>
-                    <TableCell>{row.post_title}</TableCell>
-                    <TableCell>{dateTime.format("MMMM D YYYY")}</TableCell>
+                    <TableCell>{row.post_date}</TableCell>
                     <TableCell>
                       <IconButton
                         onClick={() => handleOpenViewModal(row)}

@@ -25,6 +25,7 @@ export const mealPlanValidationSchema = Yup.object().shape({
       }
       return true
     }),
+  subscription_type: Yup.string().required("Required"),
 })
 
 export const editMealPlanValidationSchema = Yup.object().shape({
@@ -42,4 +43,5 @@ export const editMealPlanValidationSchema = Yup.object().shape({
       }
       return true
     }),
+  subscription_type: Yup.string().required("Required"),
 })

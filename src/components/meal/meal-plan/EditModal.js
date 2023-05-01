@@ -14,6 +14,7 @@ import { editMealPlanValidationSchema } from "../../../formik-utils/meals/valida
 import CustomSelect from "../../CustomSelect"
 import CustomMultiSelect from "../../CustomMultiSelect"
 import FileUpload from "../../FileUpload"
+import CustomTextArea from "../../CustomTextArea"
 
 const EditMealPlanModal = ({
   openEditModal,
@@ -22,6 +23,7 @@ const EditMealPlanModal = ({
   mealTime,
   mealTypeOptions,
   editId,
+  mealPlanSubscription,
 }) => {
   return (
     <Modal
@@ -100,7 +102,7 @@ const EditMealPlanModal = ({
                     }}
                   >
                     <CustomSelect
-                      label='Meal Time'
+                      label='Meal Category'
                       name='meal_time'
                       options={mealTime}
                     />
@@ -117,15 +119,27 @@ const EditMealPlanModal = ({
                       alignItems: "center",
                     }}
                   >
-                    <CustomTextField
+                    <CustomSelect
+                      label='Subscription Type'
+                      name='subscription_type'
+                      options={mealPlanSubscription}
+                    />
+                  </Box>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                    }}
+                  >
+                    <CustomTextArea
                       label='Description'
                       name='description'
                       type='text'
                     />
-                    <FileUpload
-                      name='file'
-                      maxSize={2 * 1024 * 1024}
-                    />
+                  </Box>
+                  <Box>
+                    <FileUpload name='file' maxSize={2 * 1024 * 1024} />
                   </Box>
                   <Box sx={{ textAlign: "right" }}>
                     <Button

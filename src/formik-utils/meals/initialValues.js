@@ -15,6 +15,7 @@ export const mealPlanInitialValue = {
   meal_type: [],
   description: "",
   file: null,
+  subscription_type: ""
 }
 
 export const editMealPlanInitialValue = {
@@ -24,4 +25,5 @@ export const editMealPlanInitialValue = {
   meal_type: [],
   description: "",
   file: null,
+  subscription_type: ""
 }

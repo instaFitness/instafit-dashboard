@@ -23,6 +23,7 @@ const AddMealPlan = ({
   openModal,
   mealTime,
   mealTypeOptions,
+  mealPlanSubscription,
 }) => {
   return (
     <Modal
@@ -101,7 +102,7 @@ const AddMealPlan = ({
                     }}
                   >
                     <CustomSelect
-                      label='Meal Time'
+                      label='Meal Category'
                       name='meal_time'
                       options={mealTime}
                     />
@@ -109,6 +110,19 @@ const AddMealPlan = ({
                       label='Meal Type'
                       name='meal_type'
                       options={mealTypeOptions}
+                    />
+                  </Box>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                    }}
+                  >
+                    <CustomSelect
+                      label='Subscription Type'
+                      name='subscription_type'
+                      options={mealPlanSubscription}
                     />
                   </Box>
                   <Box

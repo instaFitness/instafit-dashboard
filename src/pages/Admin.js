@@ -53,6 +53,8 @@ export default function Admin() {
   const [openMeal, setOpenMeal] = useState(true)
   const [openTrainings, setOpenTrainings] = useState(true)
 
+  console.log("user", user)
+
   const location = useLocation()
 
   const handleClick = () => {
@@ -162,7 +164,7 @@ export default function Admin() {
                 <Typography sx={{ paddingTop: 2 }}>
                   Hello,{" "}
                   <span style={{ color: "#FF3131", fontWeight: "bold" }}>
-                    {user.displayName === "" ? "Admin" : user.displayName}
+                    {user.displayName === null ? "Admin" : user.displayName}
                   </span>
                 </Typography>
               ) : (

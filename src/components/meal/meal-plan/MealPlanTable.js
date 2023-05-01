@@ -51,10 +51,13 @@ const MealPlanTable = ({
                 Calories Count
               </TableCell>
               <TableCell sx={{ color: "#FFF", fontWeight: "bold" }}>
-                Meal Time
+                Meal Category
               </TableCell>
               <TableCell sx={{ color: "#FFF", fontWeight: "bold" }}>
                 Meal Type
+              </TableCell>
+              <TableCell sx={{ color: "#FFF", fontWeight: "bold" }}>
+                Subscription Type
               </TableCell>
               <TableCell sx={{ color: "#FFF", fontWeight: "bold" }}>
                 Actions
@@ -111,7 +114,23 @@ const MealPlanTable = ({
                         </Button>
                       ))}
                     </TableCell>
-                    {/* <TableCell>{row.description}</TableCell> */}
+                    <TableCell>
+                      <Button
+                        variant='contained'
+                        size='small'
+                        sx={{
+                          backgroundColor: "#FAA0A0",
+                          color: "#FFF",
+                          marginRight: 2,
+                          "&:hover": {
+                            backgroundColor: "#FAA0A0",
+                            color: "#FFF",
+                          },
+                        }}
+                      >
+                        {row.subscription_type}
+                      </Button>
+                    </TableCell>
                     <TableCell>
                       <IconButton
                         onClick={() => handleOpenViewModal(row)}

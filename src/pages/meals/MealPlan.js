@@ -9,7 +9,7 @@ import {
 import { Search, Add } from "@mui/icons-material"
 import { GetMealPlanLists } from "../../hooks/meals/plan/hooks"
 import { GetMealTypeLists } from "../../hooks/meals/type/hooks"
-import { mealTime } from "../../mocks/mockData"
+import { mealTime, mealPlanSubscription } from "../../mocks/mockData"
 import { mealPlanCollectionRef } from "../../hooks/meals/plan/constants"
 import { addDoc, updateDoc, doc, deleteDoc } from "firebase/firestore"
 import { database, storage } from "../../firebase/firebase"
@@ -233,6 +233,7 @@ const MealPlan = () => {
         handleCloseModal={handleCloseModal}
         mealTime={mealTime}
         mealTypeOptions={mealTypeOptions}
+        mealPlanSubscription={mealPlanSubscription}
       />
 
       {/* EDIT MODAL */}
@@ -243,6 +244,7 @@ const MealPlan = () => {
         mealTime={mealTime}
         editId={editId}
         mealTypeOptions={mealTypeOptions}
+        mealPlanSubscription={mealPlanSubscription}
       />
 
       {/* VIEW MODAL */}

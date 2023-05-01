@@ -56,6 +56,8 @@ const ViewMealPlan = ({ handleCloseViewModal, openViewModal, getViewData }) => {
           <Box
             sx={{
               padding: 3,
+              overflowY: "scroll",
+              height: 400,
             }}
           >
             <Box
@@ -146,10 +148,30 @@ const ViewMealPlan = ({ handleCloseViewModal, openViewModal, getViewData }) => {
               </Box>
               <Box sx={{ width: "50%" }}>
                 <Typography sx={{ fontWeight: "bold", color: "#FAA0A0" }}>
-                  Description
+                  Subscription Type
                 </Typography>
-                <Typography>{getViewData.description}</Typography>
+                <Button
+                  variant='contained'
+                  size='small'
+                  sx={{
+                    backgroundColor: "#FF5C5C",
+                    color: "#FFF",
+                    marginRight: 2,
+                    "&:hover": {
+                      backgroundColor: "#FAA0A0",
+                      color: "#FFF",
+                    },
+                  }}
+                >
+                  {getViewData.subscription_type}
+                </Button>
               </Box>
+            </Box>
+            <Box>
+              <Typography sx={{ fontWeight: "bold", color: "#FAA0A0" }}>
+                Description
+              </Typography>
+              <Typography>{getViewData.description}</Typography>
             </Box>
           </Box>
         </div>

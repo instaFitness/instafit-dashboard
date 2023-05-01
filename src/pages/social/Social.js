@@ -1,10 +1,5 @@
 import React, { useState } from "react"
-import {
-  TextField,
-  Box,
-  InputAdornment,
-  IconButton,
-} from "@mui/material"
+import { TextField, Box, InputAdornment, IconButton } from "@mui/material"
 import { Search } from "@mui/icons-material"
 import { doc, deleteDoc } from "firebase/firestore"
 import { database, storage } from "../../firebase/firebase"
@@ -30,13 +25,12 @@ const Social = () => {
   }
 
   const handleDeleteSocial = async (clickId, imageStored) => {
+    console.log("imageStored", imageStored)
+    console.log("clickId", clickId)
+    const imageRef = ref(storage, `images/${imageStored}`)
     const socialSpecificDoc = doc(database, "social", clickId)
-    if(imageStored !== "null") {
-      const imageRef = ref(storage, `images/${imageStored}`)
-      await deleteObject(imageRef)
-    } else {
-      await deleteDoc(socialSpecificDoc)
-    }
+    deleteObject(imageRef)
+    deleteDoc(socialSpecificDoc)
   }
 
   return (
