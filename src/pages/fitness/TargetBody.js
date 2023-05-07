@@ -43,7 +43,6 @@ const TargetBody = () => {
   }
 
   const handleOpenViewModal = (viewData) => {
-    console.log("viewData", viewData)
     setViewData(viewData)
     setOpenViewModal(true)
   }

@@ -53,8 +53,6 @@ export default function Admin() {
   const [openMeal, setOpenMeal] = useState(true)
   const [openTrainings, setOpenTrainings] = useState(true)
 
-  console.log("user", user)
-
   const location = useLocation()
 
   const handleClick = () => {

@@ -25,8 +25,6 @@ const Social = () => {
   }
 
   const handleDeleteSocial = async (clickId, imageStored) => {
-    console.log("imageStored", imageStored)
-    console.log("clickId", clickId)
     const imageRef = ref(storage, `images/${imageStored}`)
     const socialSpecificDoc = doc(database, "social", clickId)
     deleteObject(imageRef)
