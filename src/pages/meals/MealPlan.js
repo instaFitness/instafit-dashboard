@@ -9,6 +9,7 @@ import {
 import { Search, Add } from "@mui/icons-material"
 import { GetMealPlanLists } from "../../hooks/meals/plan/hooks"
 import { GetMealTypeLists } from "../../hooks/meals/type/hooks"
+import { GetImageLists } from "../../hooks/images/hooks"
 import { mealTime, mealPlanSubscription } from "../../mocks/mockData"
 import { mealPlanCollectionRef } from "../../hooks/meals/plan/constants"
 import { addDoc, updateDoc, doc, deleteDoc } from "firebase/firestore"
@@ -29,6 +30,7 @@ const MealPlan = () => {
 
   const { mealType } = GetMealTypeLists()
   const { mealPlan } = GetMealPlanLists()
+  const { imageList } = GetImageLists()
 
   const mealTypeOptions = mealType.map((mealName) => {
     const options = {
@@ -138,7 +140,8 @@ const MealPlan = () => {
 
   const handleDeleteUser = async (clickId, imageStored) => {
     const mealTypeSpecificDoc = doc(database, "meal-plan", clickId)
-    if(imageStored !== "null") {
+    const checkifFileExists = imageList.includes(imageStored)
+    if(imageStored === undefined || checkifFileExists) {
       const imageRef = ref(storage, `images/${imageStored}`)
       await deleteObject(imageRef)
       await deleteDoc(mealTypeSpecificDoc)

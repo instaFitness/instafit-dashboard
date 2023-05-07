@@ -17,6 +17,7 @@ import ViewModal from "../../components/response/ViewModal"
 import { useGetUserLists } from "../../hooks/users/hooks"
 import { GetRespondList } from "../../hooks/response/hooks"
 import { GetTrainingPlanLists } from "../../hooks/trainings/hooks"
+import { GetImageLists } from "../../hooks/images/hooks"
 import {
   deleteObject,
   getDownloadURL,
@@ -37,6 +38,7 @@ const ResponseList = () => {
   const { users } = useGetUserLists()
   const { bodyParts } = GetBodyPartsLists()
   const { trainings } = GetTrainingPlanLists()
+  const { imageList } = GetImageLists()
   const trainingOptions = trainings.map((training) => {
     const options = {
       label: training.url,
@@ -177,7 +179,8 @@ const ResponseList = () => {
 
   const handleDeleteUser = async (clickId, imageStored) => {
     const responseSpecificDoc = doc(database, "respond_plans", clickId)
-    if (imageStored !== "null") {
+    const checkifFileExists = imageList.includes(imageStored)
+    if(imageStored === undefined || checkifFileExists) {
       const imageRef = ref(storage, `images/${imageStored}`)
       await deleteObject(imageRef)
       await deleteDoc(responseSpecificDoc)

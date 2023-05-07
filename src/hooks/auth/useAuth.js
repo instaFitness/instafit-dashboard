@@ -7,7 +7,9 @@ import {
   updateEmail,
   updatePassword,
   getAuth,
-  updateProfile
+  updateProfile,
+  EmailAuthProvider,
+  reauthenticateWithCredential,
 } from "firebase/auth"
 import { useNavigate } from "react-router-dom"
 
@@ -86,8 +88,19 @@ const useAuth = () => {
     }
   }
 
-  const updateCreds = async (email, password, name) => {
+  const reauthenticateUser = async (email, password) => {
     try {
+      const credential = EmailAuthProvider.credential(email, password);
+      await reauthenticateWithCredential(user, credential);
+    } catch (error) {
+      console.error('Error re-authenticating user:', error);
+    }
+  };
+
+  const updateCreds = async (email, password, name) => {
+    const auth = getAuth();
+    try {
+      await reauthenticateUser(email, password);
       await updateEmail(auth.currentUser, email)
       await updatePassword(auth.currentUser, password)
       await updateProfile(auth.currentUser, {

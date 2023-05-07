@@ -104,7 +104,7 @@ const CustomTable = ({
                   </TableCell>
                   <TableCell>{row.role}</TableCell>
                   <TableCell>
-                    <IconButton
+                    {/* <IconButton
                       onClick={() => handleOpenEditModal(row)}
                       sx={{
                         "&:hover": {
@@ -113,7 +113,7 @@ const CustomTable = ({
                       }}
                     >
                       <BorderColor />
-                    </IconButton>
+                    </IconButton> */}
                     <CustomDeleteButton
                       onDelete={() => handleDeleteUser(row.id)}
                       confirmText='Are you sure you want to delete this item?'
