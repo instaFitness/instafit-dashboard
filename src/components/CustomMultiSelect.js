@@ -15,6 +15,12 @@ const CustomMultiSelect = ({ name, options, label }) => {
     setFieldValue(name, event.target.value)
   }
 
+  const handleDelete = (event, valueToDelete) => {
+    event.stopPropagation();
+    const newValue = values[name].filter((value) => value !== valueToDelete);
+    setFieldValue(name, newValue);
+  };
+
   return (
     <FormControl
       fullWidth
@@ -43,6 +49,7 @@ const CustomMultiSelect = ({ name, options, label }) => {
                 <Chip
                   key={value}
                   label={option.label}
+                  onMouseDown={(event) => handleDelete(event, value)}
                   style={{ margin: "0 2px 2px 0" }}
                 />
               )

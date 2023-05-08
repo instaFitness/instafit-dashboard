@@ -41,7 +41,7 @@ const ResponseList = () => {
   const { imageList } = GetImageLists()
   const trainingOptions = trainings.map((training) => {
     const options = {
-      label: training.url,
+      label: training.workout_name,
       value: training.url,
     }
     return options
