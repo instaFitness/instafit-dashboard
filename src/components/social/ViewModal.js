@@ -4,10 +4,10 @@ import { Close } from "@mui/icons-material"
 import moment from "moment"
 
 const ViewModal = ({ handleCloseViewModal, openViewModal, getViewData }) => {
-  const seconds = getViewData?.post_date?.seconds || 0
-  const nanoseconds = getViewData?.post_date?.nanoseconds || 0
-  const milliseconds = seconds * 1000 + nanoseconds / 1000000
-  const dateTime = moment(milliseconds)
+  // const seconds = getViewData?.post_date?.seconds || 0
+  // const nanoseconds = getViewData?.post_date?.nanoseconds || 0
+  // const milliseconds = seconds * 1000 + nanoseconds / 1000000
+  // const dateTime = moment(milliseconds)
   return (
     <Modal
       open={openViewModal}
@@ -126,7 +126,7 @@ const ViewModal = ({ handleCloseViewModal, openViewModal, getViewData }) => {
                 <Typography sx={{ fontWeight: "bold", color: "#FAA0A0" }}>
                   Date Posted
                 </Typography>
-                {dateTime.format("MMMM D YYYY")}
+                {getViewData.post_date}
               </Box>
             </Box>
             <Box>

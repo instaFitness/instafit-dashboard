@@ -109,7 +109,7 @@ const RequestTable = ({
                       </Button>
                     </TableCell>
                     <TableCell>
-                      {moment(row.request_date).format("MMMM D YYYY")}
+                      {row.request_date}
                     </TableCell>
                     <TableCell>
                       <CustomDeleteButton
