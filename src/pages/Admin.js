@@ -171,17 +171,24 @@ export default function Admin() {
             </Box>
             <Divider />
             <List>
-              {/* <ListItem
-            button
-            component={NavLink}
-            to='/'
-            sx={{ textDecoration: "none" }}
-          >
-            <ListItemAvatar sx={{ mr: 2, color: "#FAA0A0" }}>
-              <Dashboard />
-            </ListItemAvatar>
-            <ListItemText primary='Dashboard' sx={{ fontWeight: "bold" }} />
-          </ListItem> */}
+              <ListItem
+                button
+                component={NavLink}
+                isActive={location.pathname === "/"}
+                to='/'
+                sx={{
+                  "&.active": { backgroundColor: "#FAA0A0", color: "white" },
+                  textDecoration: "none",
+                }}
+              >
+                <ListItemAvatar sx={{ mr: 2 }}>
+                  <Dashboard />
+                </ListItemAvatar>
+                <ListItemText
+                  primary='Dashboard'
+                  sx={{ fontWeight: "bold" }}
+                />
+              </ListItem>
               <ListItem
                 button
                 component={NavLink}
