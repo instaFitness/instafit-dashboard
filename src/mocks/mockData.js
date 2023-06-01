@@ -1,4 +1,8 @@
-export const userRole = [{ value: "user", label: "User" }]
+export const userRole = [
+  { value: "user", label: "User" },
+  { value: "trainer", label: "Trainer" },
+  { value: "nutritionist", label: "Nutritionist" },
+]
 
 export const mealTime = [
   { value: "breakfast", label: "Breakfast" },

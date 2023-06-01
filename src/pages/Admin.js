@@ -359,7 +359,7 @@ export default function Admin() {
                     <ListItemAvatar>
                       <Task />
                     </ListItemAvatar>
-                    <ListItemText primary='Meal Plan' />
+                    <ListItemText primary='Diet Plan' />
                   </ListItemButton>
                   <ListItemButton
                     button
